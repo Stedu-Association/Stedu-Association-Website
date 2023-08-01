@@ -11,7 +11,7 @@ function App() {
     <div>
       <Router>
       <div>
-        {/* <NavBar/> */}
+        <NavBar/>
       </div>
         <Routes>
           <Route path="/" element={<Home/>} exact/>

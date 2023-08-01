@@ -98,7 +98,7 @@ const Home = () => {
               Providing STEM Education and Opportunities for All
             </motion.p>
 
-            <motion.button
+            {/* <motion.button
         onClick={isAuthenticated ? () => console.log("Already logged in!") : () => loginWithRedirect()}
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -107,7 +107,7 @@ const Home = () => {
         className="hero-button bg-white text-blue-500 font-bold rounded-full px-6 py-3 mt-6 shadow-lg"
       >
         {isAuthenticated ? "Already Logged In" : "Let's Take Off"}
-      </motion.button>
+      </motion.button> */}
           </div>
         </div>
       </div>
