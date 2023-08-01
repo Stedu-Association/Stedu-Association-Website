@@ -5,11 +5,12 @@ import Aeroplane from '../assets/images/aeroplane.png';
 import Logo from '../assets/images/logo.png';
 import Circle from '../assets/images/circle.png';
 import Airport from '../assets/images/airport.png';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Home = () => {
   const [typingText, setTypingText] = useState('');
   const [glowAnimation, setGlowAnimation] = useState(false);
-
+  const { isAuthenticated,loginWithRedirect } = useAuth0();
   useEffect(() => {
     const websiteName = 'Stedu Association';
     let currentIndex = 0;
@@ -78,7 +79,7 @@ const Home = () => {
           </motion.div>
         </div>
         <div className="container mx-auto">
-          <div className="text-center">      
+          <div className="text-center">
             <img src={Logo} alt="Logo" className="w-40 md:w-60 mb-4 mx-auto" />
             <motion.h1
               initial={{ opacity: 0, y: -50 }}
@@ -98,18 +99,20 @@ const Home = () => {
             </motion.p>
 
             <motion.button
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="hero-button bg-white text-blue-500 font-bold rounded-full px-6 py-3 mt-6 shadow-lg"
-            >
-              Let's Take Off
-            </motion.button>
+        onClick={isAuthenticated ? () => console.log("Already logged in!") : () => loginWithRedirect()}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        whileHover={{ scale: 1.1, transition: { duration: 0.3 } }} // Scale up on hover
+        whileTap={{ scale: 0.9, transition: { duration: 0.3 } }} // Scale down on tap
+        className="hero-button bg-white text-blue-500 font-bold rounded-full px-6 py-3 mt-6 shadow-lg"
+      >
+        {isAuthenticated ? "Already Logged In" : "Let's Take Off"}
+      </motion.button>
           </div>
         </div>
       </div>
-  {/* Vision Section */}
-  <div className="vision-section bg-white py-16 px-10">
+      {/* Vision Section */}
+      <div className="vision-section bg-white py-16 px-10">
         <div className="container mx-auto">
           <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">Our Vision</h2>
           <p className="text-center text-gray-700 text-lg">
@@ -158,8 +161,8 @@ const Home = () => {
         </div>
       </div>
 
-           {/* Testimonials Section */}
-           <div className="testimonials-section bg-white py-16 px-10">
+      {/* Testimonials Section */}
+      <div className="testimonials-section bg-white py-16 px-10">
         <div className="container mx-auto">
           <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">Testimonials</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
