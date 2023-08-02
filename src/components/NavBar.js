@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
-import { FiHome, FiCalendar, FiBookOpen, FiBriefcase, FiUsers, FiInfo, FiSettings, FiLogOut, FiUser } from 'react-icons/fi';
+import { FiHome, FiCalendar, FiBookOpen, FiBriefcase, FiUsers, FiInfo, FiSettings, FiLogOut, FiUser, FiMoon, FiSun } from 'react-icons/fi';
 import Logo from '../assets/images/logo.png';
+import { ThemeContext } from './ThemeContext';
 
 const NavBar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
   const [showDropdown, setShowDropdown] = useState(false);
-  
+  const {theme,toggleTheme} = useContext(ThemeContext);
+
   const handleLogin = () => {
     loginWithRedirect();
   };
@@ -21,7 +23,8 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-lg">
+    <>
+      <nav className={`shadow-lg ${theme==='dark' ? 'bg-black text-white':'bg-white'}`}>
       <div className="container mx-auto px-4 py-2">
         <div className="flex justify-between items-center">
           <div>
@@ -135,9 +138,25 @@ const NavBar = () => {
               </svg>
             </button>
           </div>
+           {/* Theme Toggle Button */}
+        <div className="ml-4">
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900"
+            aria-label="Toggle theme"
+          >
+            {theme === 'light' ? (
+              <FiMoon size={20} color='blue'/>
+            ) : (
+              <FiSun size={20} color='yellow'/>
+            )}
+          </button>
+        </div>
         </div>
       </div>
     </nav>
+    </>
   );
 };
 

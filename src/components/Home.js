@@ -6,11 +6,14 @@ import Logo from '../assets/images/logo.png';
 import Circle from '../assets/images/circle.png';
 import Airport from '../assets/images/airport.png';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useTheme } from './ThemeContext';
 
 const Home = () => {
   const [typingText, setTypingText] = useState('');
   const [glowAnimation, setGlowAnimation] = useState(false);
   const { isAuthenticated,loginWithRedirect } = useAuth0();
+  const {theme} = useTheme();
+  
   useEffect(() => {
     const websiteName = 'Stedu Association';
     let currentIndex = 0;
@@ -66,9 +69,9 @@ const Home = () => {
   ];
 
   return (
-    <div>
+    <div className={theme}>
       {/* Hero Section */}
-      <div className="hero-section bg-gradient-to-r from-blue-500 via-white to-blue-400 text-black py-20 px-10 relative">
+      <div className={`hero-section ${theme === 'dark' ? 'bg-gradient-to-r from-black via-blue-900 to-black text-white' : 'bg-gradient-to-r from-blue-500 via-white to-blue-400'}  py-20 px-10 relative`}>
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
           <motion.div
             initial={{ x: '-100%', y: '50%' }}
@@ -111,27 +114,38 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <div className='flex'>
       {/* Vision Section */}
-      <div className="vision-section bg-white py-16 px-10">
-        <div className="container mx-auto">
+      <div
+        className={`vision-section ${theme === 'dark' ? 'bg-black' : 'bg-white'} py-16 px-10 animate-fade-in`}
+      >
+        <div className="container mx-auto bg-gray-100 p-9">
           <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">Our Vision</h2>
+          <hr />
           <p className="text-center text-gray-700 text-lg">
-            To create a world where every individual, regardless of their background, has access to quality STEM education and opportunities for personal and professional growth.
+            To create a world where every individual, regardless of their background, has access to quality STEM education
+            and opportunities for personal and professional growth.
           </p>
         </div>
       </div>
 
       {/* Mission Section */}
-      <div className="mission-section bg-gray-100 py-16 px-10">
-        <div className="container mx-auto">
+      <div
+        className={`mission-section ${theme === 'dark' ? 'bg-black' : 'bg-white'} py-16 px-10 animate-fade-in`}
+      >
+        <div className="container mx-auto bg-gray-100 p-6">
           <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">Our Mission</h2>
+          <hr />
           <p className="text-center text-gray-700 text-lg">
-            Stedu Association aims to provide STEM in a more accessible and approachable manner. Our mission is to empower the future generation of STEM leaders with the proper education, fair opportunities, and inspiration from professionals.
+            Stedu Association aims to provide STEM in a more accessible and approachable manner. Our mission is to
+            empower the future generation of STEM leaders with the proper education, fair opportunities, and inspiration
+            from professionals.
           </p>
         </div>
       </div>
+    </div>
       {/* Features Section */}
-      <div className="features-section bg-gray-100 py-16 px-10">
+      <div className={`features-section ${theme === 'dark' ? 'bg-black' : 'bg-gray-100'} py-16 px-10`}>
         <div className="container mx-auto">
           <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">Our Programs</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -155,14 +169,14 @@ const Home = () => {
       </div>
 
       {/* Separator */}
-      <div className="separator-section bg-gray-300 py-8">
+      <div className={`separator-section ${theme === 'dark' ? 'bg-black' : 'bg-gray-300'} py-8`}>
         <div className="container mx-auto">
           <div className="w-32 h-2 bg-blue-500 mx-auto"></div>
         </div>
       </div>
 
       {/* Testimonials Section */}
-      <div className="testimonials-section bg-white py-16 px-10">
+      <div className={`testimonials-section ${theme === 'dark' ? 'bg-black' : 'bg-white'} py-16 px-10`}>
         <div className="container mx-auto">
           <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">Testimonials</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
