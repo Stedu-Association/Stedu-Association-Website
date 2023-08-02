@@ -129,7 +129,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-
+      
       <div className='flex'>
         {/* Vision Section */}
         <div
