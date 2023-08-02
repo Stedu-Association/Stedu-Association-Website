@@ -6,6 +6,8 @@ import Logo from '../assets/images/logo.png';
 import { ThemeContext } from './ThemeContext';
 import Cloud from '../assets/images/cloud.png';
 import ReactConfetti from 'react-confetti';
+import { PopupboxContainer, PopupboxManager } from 'react-popupbox';
+
 
 const NavBar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
@@ -23,6 +25,32 @@ const NavBar = () => {
     setShowDropdown(!showDropdown);
   };
   
+  const showStreakPopup = () => {
+    PopupboxManager.open({
+      content: (
+        <div className="streak-popup-container">
+          <div className="streak-popup">
+            <h2>Congratulations!</h2>
+            <p>You've logged in for 5 days in a row.</p>
+            <button
+              onClick={() => {
+                PopupboxManager.close(); // Close the popup on button click
+              }}
+              className="bg-blue-500 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-600 mt-4"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      ),
+      config: {
+        titleBar: { enable: false },
+        fadeIn: true,
+        fadeInSpeed: 500,
+        overlayOpacity: 0.8,
+      },
+    });
+  };
 
   return (
     <>
@@ -41,19 +69,15 @@ const NavBar = () => {
               </Link>
               <Link to="/summer-program" className="flex items-center text-gray-600 hover:text-gray-900 font-medium">
                 <FiCalendar size={18} className="mr-1 inline" />
-                Summer Program
+                Stedu Lab
               </Link>
               <Link to="/stem-courses" className="flex items-center text-gray-600 hover:text-gray-900 font-medium">
                 <FiBookOpen size={18} className="mr-1 inline" />
-                STEM Courses
+                Stedu Courses
               </Link>
               <Link to="/stem-workshops" className="flex items-center text-gray-600 hover:text-gray-900 font-medium">
                 <FiBriefcase size={18} className="mr-1 inline" />
-                STEM Workshops
-              </Link>
-              <Link to="/mentorship" className="flex items-center text-gray-600 hover:text-gray-900 font-medium">
-                <FiUsers size={18} className="mr-1 inline" />
-                Mentorship
+                Stedu Club
               </Link>
               <Link to="/meet-the-team" className="flex items-center text-gray-600 hover:text-gray-900 font-medium">
                 <FiUsers size={18} className="mr-1 inline" />
@@ -159,7 +183,8 @@ const NavBar = () => {
           </div>
         </div>
       </nav>
-      
+      {/* <PopupboxContainer/>
+      {isAuthenticated && showStreakPopup()} */}
     </>
   );
 };
