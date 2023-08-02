@@ -7,13 +7,18 @@ import Circle from '../assets/images/circle.png';
 import Airport from '../assets/images/airport.png';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useTheme } from './ThemeContext';
+import Mission from '../assets/images/mission.png';
+import Vision from '../assets/images/vision.png';
+import Flag from '../assets/images/flag.png';
+import Train from '../assets/gif/train.gif';
+import NavBar from './NavBar';
 
 const Home = () => {
   const [typingText, setTypingText] = useState('');
   const [glowAnimation, setGlowAnimation] = useState(false);
-  const { isAuthenticated,loginWithRedirect } = useAuth0();
-  const {theme} = useTheme();
-  
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const { theme } = useTheme();
+
   useEffect(() => {
     const websiteName = 'Stedu Association';
     let currentIndex = 0;
@@ -114,36 +119,57 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className='flex'>
-      {/* Vision Section */}
-      <div
-        className={`vision-section ${theme === 'dark' ? 'bg-black' : 'bg-white'} py-16 px-10 animate-fade-in`}
-      >
-        <div className="container mx-auto bg-gray-100 p-9">
-          <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">Our Vision</h2>
-          <hr />
-          <p className="text-center text-gray-700 text-lg">
-            To create a world where every individual, regardless of their background, has access to quality STEM education
-            and opportunities for personal and professional growth.
-          </p>
+      {/* Train animation */}
+      <div>
+        <div style={{ overflow: 'hidden' }}>
+          <div style={{ display: 'flex', animation: 'moveTrain 20s linear infinite' }}>
+            <div>
+              <img src={Train} alt='train' style={{ height: '120px', width: 'auto' }} />
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Mission Section */}
-      <div
-        className={`mission-section ${theme === 'dark' ? 'bg-black' : 'bg-white'} py-16 px-10 animate-fade-in`}
-      >
-        <div className="container mx-auto bg-gray-100 p-6">
-          <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">Our Mission</h2>
-          <hr />
-          <p className="text-center text-gray-700 text-lg">
-            Stedu Association aims to provide STEM in a more accessible and approachable manner. Our mission is to
-            empower the future generation of STEM leaders with the proper education, fair opportunities, and inspiration
-            from professionals.
-          </p>
+      <div className='flex'>
+        {/* Vision Section */}
+        <div
+          className={`vision-section ${theme === 'dark' ? 'bg-black' : 'bg-white'} py-3 px-10 animate-fade-in`}
+        >
+          <div className="container mx-auto bg-gray-100 p-6 flex">
+            {/* <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">Our Vision</h2> */}
+            <div>
+              <img src={Vision} alt='vision' />
+            </div>
+            <div>
+              <p className="text-center text-gray-700 text-lg">
+                To create a world where every individual, regardless of their background, has access to quality STEM education
+                and opportunities for personal and professional growth.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Mission Section */}
+        <div
+          className={`mission-section ${theme === 'dark' ? 'bg-black' : 'bg-white'} py-3 px-10 animate-fade-in`}
+        >
+          <div className="container mx-auto bg-gray-100 p-6 flex">
+            {/* <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">Our Mission</h2> */}
+            {/* <hr /> */}
+            <div>
+              <img src={Mission} alt='mission' />
+            </div>
+            <div>
+              <p className="text-center text-gray-700 text-lg">
+                Stedu Association aims to provide STEM in a more accessible and approachable manner. Our mission is to
+                empower the future generation of STEM leaders with the proper education, fair opportunities, and inspiration
+                from professionals.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+
       {/* Features Section */}
       <div className={`features-section ${theme === 'dark' ? 'bg-black' : 'bg-gray-100'} py-16 px-10`}>
         <div className="container mx-auto">

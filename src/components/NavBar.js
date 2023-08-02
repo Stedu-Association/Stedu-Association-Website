@@ -4,6 +4,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { FiHome, FiCalendar, FiBookOpen, FiBriefcase, FiUsers, FiInfo, FiSettings, FiLogOut, FiUser, FiMoon, FiSun } from 'react-icons/fi';
 import Logo from '../assets/images/logo.png';
 import { ThemeContext } from './ThemeContext';
+import Cloud from '../assets/images/cloud.png';
 
 const NavBar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
