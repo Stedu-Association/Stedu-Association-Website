@@ -156,14 +156,12 @@ const Home = () => {
           <div className="container mx-auto bg-gray-100 p-6 flex">
             {/* <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">Our Mission</h2> */}
             {/* <hr /> */}
-            <div>
-              <img src={Mission} alt='mission' />
+            <div className='p-3'>
+              <img src={Mission} height={100} alt='mission' />
             </div>
             <div>
               <p className="text-center text-gray-700 text-lg">
-                Stedu Association aims to provide STEM in a more accessible and approachable manner. Our mission is to
-                empower the future generation of STEM leaders with the proper education, fair opportunities, and inspiration
-                from professionals.
+              Stedu Association is a 501(c)(3) international non-profit organization based in South Korea and California with the mission of providing STEM in a more accessible and approachable manner. STEM is becoming more and more popular, however, there aren't many resources to guide those who want to pursue specific careers in these fields. This reason is why it is so important for us to do our best to provide the future generation of STEM leaders with the proper education, fair opportunities, and inspiration from professionals.
               </p>
             </div>
           </div>
