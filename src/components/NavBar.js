@@ -22,6 +22,7 @@ const NavBar = () => {
   const handleToggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
+  
 
   return (
     <>
@@ -154,12 +155,11 @@ const NavBar = () => {
                 )}
               </button>
             </div>
-
+            {isAuthenticated && <ReactConfetti recycle={false} />}
           </div>
         </div>
       </nav>
-      {isAuthenticated && <ReactConfetti recycle={false} />}
-
+      
     </>
   );
 };
