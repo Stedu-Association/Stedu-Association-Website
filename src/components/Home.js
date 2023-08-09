@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import Aeroplane from '../assets/images/aeroplane.png';
 import Logo from '../assets/images/logo.png';
-import Circle from '../assets/images/circle.png';
-import Airport from '../assets/images/airport.png';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useTheme } from './ThemeContext';
-import Mission from '../assets/images/mission.png';
-import Vision from '../assets/images/vision.png';
-import Flag from '../assets/images/flag.png';
-import Train from '../assets/gif/train.gif';
 import NavBar from './NavBar';
 
 const Home = () => {
@@ -77,15 +70,7 @@ const Home = () => {
     <div className={theme}>
       {/* Hero Section */}
       <div className={`hero-section ${theme === 'dark' ? 'bg-gradient-to-r from-black via-blue-900 to-black text-white' : 'bg-gradient-to-r from-blue-500 via-white to-blue-400'}  py-20 px-10 relative`}>
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-          <motion.div
-            initial={{ x: '-100%', y: '50%' }}
-            animate={{ x: '100%', y: '50%' }}
-            transition={{ duration: 7, repeat: Infinity, repeatType: 'loop', ease: 'linear' }}
-          >
-            <img src={Aeroplane} alt="Airplane" className="w-40 md:w-60 h-auto transform scale-75 md:scale-100" />
-          </motion.div>
-        </div>
+       
         <div className="container mx-auto">
           <div className="text-center">
             <img src={Logo} alt="Logo" className="w-40 md:w-60 mb-4 mx-auto" />
@@ -119,35 +104,9 @@ const Home = () => {
           </div>
         </div>
       </div>
-      {/* Train animation */}
-      <div>
-        <div style={{ overflow: 'hidden' }}>
-          <div style={{ display: 'flex', animation: 'moveTrain 20s linear infinite' }}>
-            <div>
-              <img src={Train} alt='train' style={{ height: '120px', width: 'auto' }} />
-            </div>
-          </div>
-        </div>
-      </div>
+      
       
       <div className='flex'>
-        {/* Vision Section */}
-        <div
-          className={`vision-section ${theme === 'dark' ? 'bg-black' : 'bg-white'} py-3 px-10 animate-fade-in`}
-        >
-          <div className="container mx-auto bg-gray-100 p-6 flex">
-            {/* <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">Our Vision</h2> */}
-            <div>
-              <img src={Vision} alt='vision' />
-            </div>
-            <div>
-              <p className="text-center text-gray-700 text-lg">
-                To create a world where every individual, regardless of their background, has access to quality STEM education
-                and opportunities for personal and professional growth.
-              </p>
-            </div>
-          </div>
-        </div>
 
         {/* Mission Section */}
         <div
@@ -156,9 +115,6 @@ const Home = () => {
           <div className="container mx-auto bg-gray-100 p-6 flex">
             {/* <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">Our Mission</h2> */}
             {/* <hr /> */}
-            <div className='p-3'>
-              <img src={Mission} height={100} alt='mission' />
-            </div>
             <div>
               <p className="text-center text-gray-700 text-lg">
               Stedu Association is a 501(c)(3) international non-profit organization based in South Korea and California with the mission of providing STEM in a more accessible and approachable manner. STEM is becoming more and more popular, however, there aren't many resources to guide those who want to pursue specific careers in these fields. This reason is why it is so important for us to do our best to provide the future generation of STEM leaders with the proper education, fair opportunities, and inspiration from professionals.
