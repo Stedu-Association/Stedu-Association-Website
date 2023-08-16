@@ -61,7 +61,7 @@ const NavBar = () => {
 
   return (
     <div>
-        <nav className={`fixed top-0 left-0 right-0 z-50 shadow-lg ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}
+      <nav className={`fixed top-0 left-0 right-0 z-50 shadow-lg ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}
         style={{
           backdropFilter: 'blur(30px)',
           backgroundColor: (showDropdown || showSteduDropdown) ? 'rgba(0, 0, 0, 0.1)' : 'transparent'
@@ -89,45 +89,50 @@ const NavBar = () => {
                 <FiUsers size={18} className="mr-1 inline" />
                 Meet the Team
               </Link>
-              <div className="relative group">
-              <div
-                className={`flex items-center hover:text-gray-900 font-medium whitespace-nowrap cursor-pointer ${theme === 'dark' ? 'text-white' : ''}`}
-                onClick={handleToggleSteduDropdown}
-              >
-                <FiBriefcase size={18} className="mr-1 inline" />
-                Stedu Initiatives
-              </div>
-              {showSteduDropdown && (
-                <motion.div
-                  className={`absolute right-0 mt-2 py-4 w-44 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border border-gray-300 rounded-md shadow-lg z-10`}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                    <Link to="/stedu_lab" className={`block px-4 py-2 text-sm ${theme === 'dark' ? 'text-white dark:hover:bg-gray-700' : 'text-black'} hover:bg-gray-100`}>
-                      <FiCalendar size={18} className="mr-1 inline" />
-                      Stedu Lab
-                    </Link>
-                    <Link to="/stedu_club" className={`block px-4 py-2 text-sm ${theme === 'dark' ? 'text-white dark:hover:bg-gray-700' : 'text-black'} hover:bg-gray-100`}>
-                      <FiBriefcase size={18} className="mr-1 inline" />
-                      Stedu Club
-                    </Link>
-                    <Link to="/stedu_courses" className={`block px-4 py-2 text-sm ${theme === 'dark' ? 'text-white dark:hover:bg-gray-700' : 'text-black'} hover:bg-gray-100`}>
-                      <FiBookOpen size={18} className="mr-1 inline" />
-                      Stedu Courses
-                    </Link>
-                    <Link to="/stedu_hack" className={`block px-4 py-2 text-sm ${theme === 'dark' ? 'text-white dark:hover:bg-gray-700' : 'text-black'} hover:bg-gray-100`}>
-                      <FiPlus size={18} className="mr-1 inline" />
-                      Stedu Hack
-                    </Link>
-                  </motion.div>
-                )}
-              </div>
 
-              <Link to="/community" className="flex items-center hover:text-gray-900 font-medium whitespace-nowrap">
-                <FiUsers size={18} className="mr-1 inline" />
-                Community
-              </Link>
+              {/*Stedu Initiatives */}
+                <div className="relative group">
+                  <div
+                    className={`flex items-center hover:text-gray-900 font-medium whitespace-nowrap cursor-pointer ${theme === 'dark' ? 'text-white' : ''}`}
+                    onClick={handleToggleSteduDropdown}
+                  >
+                    <FiBriefcase size={18} className="mr-1 inline" />
+                    Stedu Initiatives
+                  </div>
+                  {showSteduDropdown && (
+                    <motion.div
+                      className={`absolute right-0 mt-2 w-72 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border border-gray-300 rounded-md shadow-lg z-10`}
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                      style={{ maxHeight: '300px', overflowY: 'auto' }}
+                    >
+                      <div className="grid grid-cols-2 gap-2 p-4">
+                        <Link to="/stedu_lab" className={`block text-sm ${theme === 'dark' ? 'text-white dark:hover:bg-gray-700' : 'text-black'} hover:bg-gray-100 p-2 rounded-md`}>
+                          <FiCalendar size={18} className="mr-2 inline" />
+                          Stedu Lab
+                        </Link>
+                        <Link to="/stedu_club" className={`block text-sm ${theme === 'dark' ? 'text-white dark:hover:bg-gray-700' : 'text-black'} hover:bg-gray-100 p-2 rounded-md`}>
+                          <FiBriefcase size={18} className="mr-2 inline" />
+                          Stedu Club
+                        </Link>
+                        <Link to="/stedu_courses" className={`block text-sm ${theme === 'dark' ? 'text-white dark:hover:bg-gray-700' : 'text-black'} hover:bg-gray-100 p-2 rounded-md`}>
+                          <FiBookOpen size={18} className="mr-2 inline" />
+                          Stedu Courses
+                        </Link>
+                        <Link to="/stedu_hack" className={`block text-sm ${theme === 'dark' ? 'text-white dark:hover:bg-gray-700' : 'text-black'} hover:bg-gray-100 p-2 rounded-md`}>
+                          <FiPlus size={18} className="mr-2 inline" />
+                          Stedu Hack
+                        </Link>
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
+
+                <Link to="/community" className="flex items-center hover:text-gray-900 font-medium whitespace-nowrap">
+                  <FiUsers size={18} className="mr-1 inline" />
+                  Community
+                </Link>
             </motion.div>
             <motion.div className="md:flex space-x-4 items-center"
               initial={{ opacity: 0, y: -10 }}
@@ -158,6 +163,8 @@ const NavBar = () => {
                       />
                     </motion.svg>
                   </motion.button>
+                  
+              {/* User Profile Dropdown */}
                   {showDropdown && (
                     <motion.div className='py-5'
                       initial={{ opacity: 0, y: -10 }}
@@ -166,19 +173,19 @@ const NavBar = () => {
                       <div className={`absolute right-0 mt-4 py-4 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border border-gray-300 rounded-md shadow-lg z-10`}>
                         <Link
                           to="/profile"
-                          className={`block px-4 py-4 text-sm ${theme === 'dark' ? 'text-white' : 'text-black'} hover:bg-gray-100`}
+                          className={`block px-4 py-4 text-sm ${theme === 'dark' ? 'text-white ' : 'text-black'} `}
                         >
                           View Profile
                         </Link>
                         <Link
                           to="/settings"
-                          className={`block px-4 py-4 text-sm ${theme === 'dark' ? 'text-white' : 'text-black'} hover:bg-gray-100`}
+                          className={`block px-4 py-4 text-sm ${theme === 'dark' ? 'text-white' : 'text-black'}`}
                         >
                           Settings
                         </Link>
                         <button
                           onClick={handleLogout}
-                          className={`block w-full text-left px-4 py-4 text-sm ${theme === 'dark' ? 'text-red-400' : 'text-red-600'} hover:bg-gray-100`}
+                          className={`block w-full text-left px-4 py-4 text-sm ${theme === 'dark' ? 'text-red-400' : 'text-red-600'} `}
                         >
                           Logout
                         </button>
