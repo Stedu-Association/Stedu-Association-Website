@@ -11,6 +11,7 @@ import { PopupboxContainer, PopupboxManager } from 'react-popupbox';
 const NavBar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showSteduDropdown, setShowSteduDropdown] = useState(false);
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   const handleLogin = () => {
@@ -20,11 +21,17 @@ const NavBar = () => {
   const handleLogout = () => {
     logout({ returnTo: window.location.origin });
   };
-
   const handleToggleDropdown = () => {
     setShowDropdown(!showDropdown);
+    setShowSteduDropdown(false); // Stedu initiatives dropdown
   };
 
+  const handleToggleSteduDropdown = () => {
+    setShowSteduDropdown(!showSteduDropdown);
+    setShowDropdown(false); // User Profile dropdown
+  };
+
+  // Streak Popup
   const showStreakPopup = () => {
     PopupboxManager.open({
       content: (
@@ -54,10 +61,10 @@ const NavBar = () => {
 
   return (
     <div>
-      <nav className={`fixed top-0 left-0 right-0 z-50 shadow-lg ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}
+        <nav className={`fixed top-0 left-0 right-0 z-50 shadow-lg ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}
         style={{
           backdropFilter: 'blur(30px)',
-          backgroundColor: showDropdown ? 'rgba(455, 0, 455, 0.1)' : 'transparent'
+          backgroundColor: (showDropdown || showSteduDropdown) ? 'rgba(0, 0, 0, 0.1)' : 'transparent'
         }}>
         <div className="container mx-auto px-4 py-2">
           <div className="flex justify-between items-center">
@@ -83,33 +90,33 @@ const NavBar = () => {
                 Meet the Team
               </Link>
               <div className="relative group">
-                <div
-                  className={`flex items-center hover:text-gray-900 font-medium whitespace-nowrap cursor-pointer ${theme === 'dark' ? 'text-white' : ''}`}
-                  onClick={handleToggleDropdown}
+              <div
+                className={`flex items-center hover:text-gray-900 font-medium whitespace-nowrap cursor-pointer ${theme === 'dark' ? 'text-white' : ''}`}
+                onClick={handleToggleSteduDropdown}
+              >
+                <FiBriefcase size={18} className="mr-1 inline" />
+                Stedu Initiatives
+              </div>
+              {showSteduDropdown && (
+                <motion.div
+                  className={`absolute right-0 mt-2 py-4 w-44 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border border-gray-300 rounded-md shadow-lg z-10`}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <FiBriefcase size={18} className="mr-1 inline" />
-                  Stedu Initiatives
-                </div>
-                {showDropdown && (
-                  <motion.div
-                    className={`absolute right-0 mt-2 py-2 w-44 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border border-gray-300 rounded-md shadow-lg z-10`}
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Link to="/stedu_lab" className={`block px-4 py-2 text-sm ${theme === 'dark' ? 'text-white' : 'text-black'} hover:bg-gray-100 dark:hover:bg-gray-700`}>
+                    <Link to="/stedu_lab" className={`block px-4 py-2 text-sm ${theme === 'dark' ? 'text-white dark:hover:bg-gray-700' : 'text-black'} hover:bg-gray-100`}>
                       <FiCalendar size={18} className="mr-1 inline" />
                       Stedu Lab
                     </Link>
-                    <Link to="/stedu_club" className={`block px-4 py-2 text-sm ${theme === 'dark' ? 'text-white' : 'text-black'} hover:bg-gray-100 dark:hover:bg-gray-700`}>
+                    <Link to="/stedu_club" className={`block px-4 py-2 text-sm ${theme === 'dark' ? 'text-white dark:hover:bg-gray-700' : 'text-black'} hover:bg-gray-100`}>
                       <FiBriefcase size={18} className="mr-1 inline" />
                       Stedu Club
                     </Link>
-                    <Link to="/stedu_courses" className={`block px-4 py-2 text-sm ${theme === 'dark' ? 'text-white' : 'text-black'} hover:bg-gray-100 dark:hover:bg-gray-700`}>
+                    <Link to="/stedu_courses" className={`block px-4 py-2 text-sm ${theme === 'dark' ? 'text-white dark:hover:bg-gray-700' : 'text-black'} hover:bg-gray-100`}>
                       <FiBookOpen size={18} className="mr-1 inline" />
                       Stedu Courses
                     </Link>
-                    <Link to="/stedu_hack" className={`block px-4 py-2 text-sm ${theme === 'dark' ? 'text-white' : 'text-black'} hover:bg-gray-100 dark:hover:bg-gray-700`}>
+                    <Link to="/stedu_hack" className={`block px-4 py-2 text-sm ${theme === 'dark' ? 'text-white dark:hover:bg-gray-700' : 'text-black'} hover:bg-gray-100`}>
                       <FiPlus size={18} className="mr-1 inline" />
                       Stedu Hack
                     </Link>
@@ -200,7 +207,7 @@ const NavBar = () => {
                 className={`text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900 ${theme === 'dark' ? 'text-white' : ''}`}
                 aria-label="Toggle menu"
               >
-                <svg className={`h-6 w-6 fill-current ${theme === 'dark' ? 'text-white' : ''}`} viewBox="0 0 44 44">
+                <svg className={`h-2 w-6 fill-current ${theme === 'dark' ? 'text-white' : ''}`} viewBox="0 0 44 44">
                   <path
                     className="heroicon-ui"
                     d="M4 6h16M4 14h16m-7 6h7"
