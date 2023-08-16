@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import Logo from '../assets/images/logo.png';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useTheme } from '../components/ThemeContext';
-import Google from '../assets/images/sponsors/google_logo.png';
-import Canva from '../assets/images/sponsors/canva_logo.png';
-import Crimson from '../assets/images/sponsors/crimson_logo.png';
+import Google from '../assets/images/sponsors/google_logo (1).png';
+import Canva from '../assets/images/sponsors/Canva-New-Logo.png';
+import Crimson from '../assets/images/sponsors/crimson_logo (1).webp';
 import Fibery from '../assets/images/sponsors/fibery.png';
-import Taskade from '../assets/images/sponsors/taskade-logo.png';
+import Taskade from '../assets/images/sponsors/taskade-circle-logo-full-black.png';
 import { FiBookOpen, FiBriefcase, FiCalendar, FiPlus, FiUsers } from 'react-icons/fi';
 import SteduLab from '../assets/gif/animation1.gif'
 import SteduCourses from '../assets/gif/animation2.gif'
@@ -59,9 +59,9 @@ const Home = () => {
 
 
   const sponsorImages = [
-    { src: Google, alt: 'Google' },
-    { src: Canva, alt: 'Canva' },
     { src: Crimson, alt: 'Crimson' },
+    { src: Canva, alt: 'Canva' },
+    { src: Google, alt: 'Google' },
     { src: Taskade, alt: 'Taskade' },
     { src: Fibery, alt: 'Fibery' },
   ];
@@ -103,37 +103,35 @@ const Home = () => {
             We strive to promote the idea of "STEM for ALL" by presenting STEM opportunities to everyone, regardless of where they are from, what they do, or how they identify.
             </motion.p> */}
 
-
             {/* Sponsors */}
-            <div className="sponsors-section py-1 px-4 bg-opacity-50 backdrop-filter backdrop-blur-lg">
+            <div className="sponsors-section py-4 px-4 relative">
+              <div className="blackish-background absolute inset-0 bg-black bg-opacity-30 backdrop-filter backdrop-blur-lg z-0"></div>
               <div className="container mx-auto">
-                <motion.div
-                  className="sponsors-list flex items-center justify-center overflow-hidden"
-                  initial={{ x: -1000 }}
-                  animate={{ x: 0 }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                >
-                  <h2 className={`text-center text-2xl font-bold mb-6  ${theme === 'dark' ? 'text-blue-200' : 'text-black'}`}>Trusted by</h2>
+                <div className={`sponsors-list flex flex-col items-center justify-center text-center ${theme === 'dark' ? 'text-blue-200' : 'text-black'}`}>
+                  <div className="horizontal-sponsor-strip flex items-center space-x-6 relative z-1">
+                  <h2 className=" text-2xl font-bold mb-4">Trusted by</h2>
 
-                  {sponsorImages.map((sponsor, index) => (
-                    <motion.div
-                      key={index}
-                      className="w-40 h-40 rounded-full overflow-hidden m-4 flex items-center justify-center shadow-xl bg-white transform hover:scale-105 transition-transform duration-300"
-                      initial={{ y: 100, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 1, delay: index * 0.5 }}
-                    >
-                      <motion.img
-                        src={sponsor.src}
-                        alt={sponsor.alt}
-                        className="w-full h-auto"
-                      />
-                    </motion.div>
-                  ))}
-                </motion.div>
+                    {sponsorImages.map((sponsor, index) => (
+                      <motion.div
+                        key={index}
+                        className="sponsor-item rounded-lg overflow-hidden"
+                        initial={{ y: 100, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 1, delay: index * 0.5 }}
+                      >
+                        <motion.img
+                          src={sponsor.src}
+                          alt={sponsor.alt}
+                          className={`w-40 h-auto grayscale transition duration-500 hover:grayscale-0 transform hover:scale-105`}
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
 
+            <div className='section-separator' />
             {/* Impact stats */}
             <div className="impact-section p-5 text-center relative">
               <div className="container mx-auto">
