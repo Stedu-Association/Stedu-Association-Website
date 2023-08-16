@@ -14,6 +14,9 @@ import SteduLab from '../assets/gif/animation1.gif'
 import SteduCourses from '../assets/gif/animation2.gif'
 import SteduClub from '../assets/gif/animation4.gif'
 import SteduPlus from '../assets/gif/animation3.gif'
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const Home = () => {
   const [typingText, setTypingText] = useState('');
@@ -34,11 +37,6 @@ const Home = () => {
     }, 100);
   }, []);
 
-  const getRandomAvatarUrl = () => {
-    const avatars = ['male', 'female', 'identicon', 'gridy'];
-    const randomAvatar = avatars[Math.floor(Math.random() * avatars.length)];
-    return `https://avatars.dicebear.com/api/${randomAvatar}/${Math.random()}.svg`;
-  };
 
   const testimonials = [
     {
@@ -238,34 +236,34 @@ const Home = () => {
             </div>
 
             {/* Testimonials Section */}
-            <div className={`testimonials-section  py-16 px-10 relative overflow-hidden`}>
+            <div className={`testimonials-section py-6 px-40 relative overflow-hidden`}>
               <div className="container mx-auto">
-                <h2 className={`text-center text-2xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-800'} mb-6`}>Testimonials</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <h2 className={`text-center custom-underline text-2xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-800'} mb-6`}>Testimonials</h2>
+                <Slider
+                  dots={true}
+                  infinite={true}
+                  autoplay={true}
+                  autoplaySpeed={4000}
+                  slidesToShow={1}
+                  slidesToScroll={1}
+                >
                   {testimonials.map((testimonial, index) => (
-                    <motion.div
-                      key={index}
-                      whileHover={{ scale: 1.05, y: -5, boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.1)' }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`testimonial-card relative ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-lg transition-transform`}
-                    >
-                      <div className="testimonial-avatar absolute top-0 left-0 transform translate-x-[-50%] -translate-y-1/2">
-                        <img src={getRandomAvatarUrl()} alt="Avatar" className="w-12 h-12 rounded-full" />
+                    <div key={index}>
+                      <div className={`testimonial-card  ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                        <div className="p-6">
+                          <p className="testimonial-text mb-4">{testimonial.text}</p>
+                          <p className={`testimonial-author font-bold ${theme === 'dark' ? 'text-blue-400' : 'text-blue-600'}`}>
+                            {testimonial.author}
+                          </p>
+                        </div>
                       </div>
-                      <p className={`testimonial-text mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                        {testimonial.text}
-                      </p>
-                      <p className={`testimonial-author font-bold ${theme === 'dark' ? 'text-blue-400' : 'text-blue-600'}`}>
-                        {testimonial.author}
-                      </p>
-                    </motion.div>
+                    </div>
                   ))}
-                </div>
+                </Slider>
                 <div className="testimonial-bg-gradient absolute inset-0 pointer-events-none"></div>
               </div>
             </div>
           </div>
-
 
         </div>
       </div>
