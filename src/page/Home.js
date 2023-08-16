@@ -115,7 +115,7 @@ const Home = () => {
                   animate={{ x: 0 }}
                   transition={{ duration: 1, delay: 0.5 }}
                 >
-                  <h2 className={`text-center text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-blue-200' : 'text-black'}`}>Trusted by</h2>
+                  <h2 className={`text-center text-2xl font-bold mb-6  ${theme === 'dark' ? 'text-blue-200' : 'text-black'}`}>Trusted by</h2>
 
                   {sponsorImages.map((sponsor, index) => (
                     <motion.div
@@ -139,7 +139,7 @@ const Home = () => {
             {/* Impact stats */}
             <div className="impact-section p-5 text-center">
               <div className="container mx-auto">
-                <h2 className={`text-3xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                <h2 className={`text-3xl font-bold custom-underline mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
                   Our Impact in Numbers
                 </h2>
                 <motion.div
@@ -153,7 +153,7 @@ const Home = () => {
                       key={index}
                       whileHover={{ scale: 1.05, y: -10 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`impact-stat ${theme === 'dark' ? 'bg-gradient-to-r from-gray-800 to-gray-900 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-lg flex flex-col justify-center items-center`}
+                      className={`impact-stat ${theme === 'dark' ? 'text-white' : 'text-gray-800'} p-6 rounded-lg shadow-lg flex flex-col justify-center items-center`}
                     >
                       <div className="icon-wrapper">
                         {stat.label === 'students' ? (
@@ -190,7 +190,7 @@ const Home = () => {
 
             {/* Stedu initiatives */}
             <div className="stedu-sections py-16 px-10">
-              <h2 className={`text-3xl font-bold text-center mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+              <h2 className={`text-3xl custom-underline font-bold text-center mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
                 Explore Stedu Initiatives
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -204,7 +204,7 @@ const Home = () => {
                     key={index}
                     whileHover={{ scale: 1.1, y: -5, boxShadow: '0px 20px 40px rgba(0, 0, 0, 0.15)' }}
                     whileTap={{ scale: 0.95 }}
-                    className={`stedu-section-card relative flex md:flex-row-reverse ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg transition-transform`}
+                    className={`stedu-section-card relative flex md:flex-row-reverse ${theme === 'dark' ? 'text-white' : 'text-gray-800'} p-6 rounded-lg transition-transform`}
                   >
                     <div className="stedu-card-image md:w-1/2 relative overflow-hidden rounded-lg">
                       <img src={section.image} alt={section.title} className="w-full h-full object-cover" />
