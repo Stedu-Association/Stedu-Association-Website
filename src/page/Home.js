@@ -137,11 +137,11 @@ const Home = () => {
             {/* Impact stats */}
             <div className="impact-section p-5 text-center relative">
               <div className="container mx-auto">
-              <div>
-                <h2 className={`text-3xl font-bold custom-underline mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
-                  Our Impact in Numbers
-                </h2>
-              </div>
+                <div>
+                  <h2 className={`text-3xl font-bold custom-underline mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                    Our Impact in Numbers
+                  </h2>
+                </div>
                 <div className={`bg-${theme === 'dark' ? 'black' : 'white'} bg-opacity-40 rounded-lg backdrop-blur-lg p-8 relative z-10`}>
                   <motion.div
                     className="grid grid-cols-2 gap-8"
@@ -265,7 +265,7 @@ const Home = () => {
                   ))}
                 </Slider>
                 <div className="testimonial-bg-gradient absolute inset-0 pointer-events-none"></div>
-             
+
               </div>
             </div>
           </div>

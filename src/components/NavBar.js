@@ -77,15 +77,15 @@ const NavBar = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}>
-              <Link to="/" className="flex items-center hover:text-gray-900 font-medium whitespace-nowrap">
+              <Link to="/" className="flex items-center hover:text-blue-500  font-medium whitespace-nowrap">
                 <FiHome size={18} className="mr-1 inline" />
                 Home
               </Link>
-              <Link to="/about" className="flex items-center hover:text-gray-900 font-medium whitespace-nowrap">
+              <Link to="/about" className="flex items-center hover:text-blue-500  font-medium whitespace-nowrap">
                 <FiInfo size={18} className="mr-1 inline" />
                 About
               </Link>
-              <Link to="/meet_the_team" className="flex items-center hover:text-gray-900 font-medium whitespace-nowrap">
+              <Link to="/meet_the_team" className="flex items-center hover:text-blue-500 font-medium whitespace-nowrap">
                 <FiUsers size={18} className="mr-1 inline" />
                 Meet the Team
               </Link>
@@ -93,7 +93,7 @@ const NavBar = () => {
               {/*Stedu Initiatives */}
                 <div className="relative group">
                   <div
-                    className={`flex items-center hover:text-gray-900 font-medium whitespace-nowrap cursor-pointer ${theme === 'dark' ? 'text-white' : ''}`}
+                    className={`flex items-center hover:text-blue-500 font-medium whitespace-nowrap cursor-pointer ${theme === 'dark' ? 'text-white' : ''}`}
                     onClick={handleToggleSteduDropdown}
                   >
                     <FiBriefcase size={18} className="mr-1 inline" />
@@ -128,12 +128,12 @@ const NavBar = () => {
                     </motion.div>
                   )}
                 </div>
-
-                <Link to="/community" className="flex items-center hover:text-gray-900 font-medium whitespace-nowrap">
+                <Link to="/community" className="flex items-center hover:text-blue-500 font-medium whitespace-nowrap">
                   <FiUsers size={18} className="mr-1 inline" />
                   Community
                 </Link>
             </motion.div>
+
             <motion.div className="md:flex space-x-4 items-center"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
