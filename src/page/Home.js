@@ -122,7 +122,7 @@ const Home = () => {
                         <motion.img
                           src={sponsor.src}
                           alt={sponsor.alt}
-                          className={`w-40 h-auto grayscale transition duration-500 hover:grayscale-0 transform hover:scale-105`}
+                          className={`w-40 h-auto grayscale transition duration-500 hover:grayscale-0 transform hover:scale-101`}
                         />
                       </motion.div>
                     ))}
