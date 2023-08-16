@@ -54,9 +54,9 @@ const NavBar = () => {
 
   return (
     <div>
-      <nav className={`fixed top-0 left-0 right-0 z-50 shadow-lg ${showDropdown ? 'bg-white' : 'bg-transparent'} ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}
+      <nav className={`fixed top-0 left-0 right-0 z-50 shadow-lg ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}
            style={{
-             backdropFilter: showDropdown ? 'blur(30px)' : 'none',
+             backdropFilter: 'blur(30px)',
              backgroundColor: showDropdown ? 'rgba(255, 0, 255, 0.1)' : 'transparent'
            }}>
         <div className="container mx-auto px-4 py-2">

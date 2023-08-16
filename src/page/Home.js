@@ -70,6 +70,9 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Sponsors */}
+      
+
       {/* Testimonials Section */}
       <div className={`testimonials-section ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} py-16 px-10`}>
         <div className="container mx-auto">
