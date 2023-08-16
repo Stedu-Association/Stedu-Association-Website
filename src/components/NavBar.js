@@ -30,13 +30,13 @@ const NavBar = () => {
       content: (
         <div className="streak-popup-container">
           <div className="streak-popup">
-            <h2>Congratulations!</h2>
+            <h4>Congratulations!</h4>
             <p>You've logged in for 5 days in a row.</p>
             <button
               onClick={() => {
                 PopupboxManager.close();
               }}
-              className="bg-blue-500 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-600 mt-4"
+              className="bg-blue-500 text-white font-medium py-4 px-4 rounded-md hover:bg-blue-600 mt-4"
             >
               OK
             </button>
@@ -55,10 +55,10 @@ const NavBar = () => {
   return (
     <div>
       <nav className={`fixed top-0 left-0 right-0 z-50 shadow-lg ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}
-           style={{
-             backdropFilter: 'blur(30px)',
-             backgroundColor: showDropdown ? 'rgba(255, 0, 255, 0.1)' : 'transparent'
-           }}>
+        style={{
+          backdropFilter: 'blur(30px)',
+          backgroundColor: showDropdown ? 'rgba(455, 0, 455, 0.1)' : 'transparent'
+        }}>
         <div className="container mx-auto px-4 py-2">
           <div className="flex justify-between items-center">
             <div>
@@ -69,36 +69,55 @@ const NavBar = () => {
             <motion.div className="md:flex space-x-4 hidden"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}>
-              <Link to="/" className="flex items-center hover:text-gray-900 font-medium">
+              transition={{ duration: 0.5, delay: 0.4 }}>
+              <Link to="/" className="flex items-center hover:text-gray-900 font-medium whitespace-nowrap">
                 <FiHome size={18} className="mr-1 inline" />
                 Home
               </Link>
-              <Link to="/about" className="flex items-center hover:text-gray-900 font-medium">
+              <Link to="/about" className="flex items-center hover:text-gray-900 font-medium whitespace-nowrap">
                 <FiInfo size={18} className="mr-1 inline" />
                 About
               </Link>
-              <Link to="/meet_the_team" className="flex items-center hover:text-gray-900 font-medium">
+              <Link to="/meet_the_team" className="flex items-center hover:text-gray-900 font-medium whitespace-nowrap">
                 <FiUsers size={18} className="mr-1 inline" />
                 Meet the Team
               </Link>
-              <Link to="/stedu_lab" className="flex items-center hover:text-gray-900 font-medium">
-                <FiCalendar size={18} className="mr-1 inline" />
-                Stedu Lab
-              </Link>
-              <Link to="/stedu_club" className="flex items-center hover:text-gray-900 font-medium">
-                <FiBriefcase size={18} className="mr-1 inline" />
-                Stedu Club
-              </Link>
-              <Link to="/stedu_courses" className="flex items-center hover:text-gray-900 font-medium">
-                <FiBookOpen size={18} className="mr-1 inline" />
-                Stedu Courses
-              </Link>
-              <Link to="/stedu_hack" className="flex items-center hover:text-gray-900 font-medium">
-                <FiPlus size={18} className="mr-1 inline" />
-                Stedu Hack
-              </Link>
-              <Link to="/community" className="flex items-center hover:text-gray-900 font-medium">
+              <div className="relative group">
+                <div
+                  className={`flex items-center hover:text-gray-900 font-medium whitespace-nowrap cursor-pointer ${theme === 'dark' ? 'text-white' : ''}`}
+                  onClick={handleToggleDropdown}
+                >
+                  <FiBriefcase size={18} className="mr-1 inline" />
+                  Stedu Initiatives
+                </div>
+                {showDropdown && (
+                  <motion.div
+                    className={`absolute right-0 mt-2 py-2 w-44 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border border-gray-300 rounded-md shadow-lg z-10`}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Link to="/stedu_lab" className={`block px-4 py-2 text-sm ${theme === 'dark' ? 'text-white' : 'text-black'} hover:bg-gray-100 dark:hover:bg-gray-700`}>
+                      <FiCalendar size={18} className="mr-1 inline" />
+                      Stedu Lab
+                    </Link>
+                    <Link to="/stedu_club" className={`block px-4 py-2 text-sm ${theme === 'dark' ? 'text-white' : 'text-black'} hover:bg-gray-100 dark:hover:bg-gray-700`}>
+                      <FiBriefcase size={18} className="mr-1 inline" />
+                      Stedu Club
+                    </Link>
+                    <Link to="/stedu_courses" className={`block px-4 py-2 text-sm ${theme === 'dark' ? 'text-white' : 'text-black'} hover:bg-gray-100 dark:hover:bg-gray-700`}>
+                      <FiBookOpen size={18} className="mr-1 inline" />
+                      Stedu Courses
+                    </Link>
+                    <Link to="/stedu_hack" className={`block px-4 py-2 text-sm ${theme === 'dark' ? 'text-white' : 'text-black'} hover:bg-gray-100 dark:hover:bg-gray-700`}>
+                      <FiPlus size={18} className="mr-1 inline" />
+                      Stedu Hack
+                    </Link>
+                  </motion.div>
+                )}
+              </div>
+
+              <Link to="/community" className="flex items-center hover:text-gray-900 font-medium whitespace-nowrap">
                 <FiUsers size={18} className="mr-1 inline" />
                 Community
               </Link>
@@ -106,9 +125,9 @@ const NavBar = () => {
             <motion.div className="md:flex space-x-4 items-center"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}>
+              transition={{ duration: 0.5, delay: 0.4 }}>
               {isAuthenticated ? (
-                <div className="relative flex items-center space-x-2">
+                <div className="relative flex items-center space-x-4">
                   <motion.button
                     onClick={handleToggleDropdown}
                     className="flex items-center space-x-1 cursor-pointer focus:outline-none"
@@ -120,14 +139,14 @@ const NavBar = () => {
                     <motion.svg
                       className={`w-4 h-4 ${showDropdown ? 'rotate-180' : ''}`}
                       fill="none"
-                      viewBox="0 0 24 24"
+                      viewBox="0 0 44 44"
                       stroke="currentColor"
                       whileHover={{ rotate: 90 }}
                     >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={2}
+                        strokeWidth={4}
                         d={showDropdown ? 'M19 9l-7 7-7-7' : 'M9 5l7 7-7 7'}
                       />
                     </motion.svg>
@@ -137,22 +156,22 @@ const NavBar = () => {
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3 }}>
-                      <div className={`absolute right-0 mt-2 py-2 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border border-gray-300 rounded-md shadow-lg z-10`}>
+                      <div className={`absolute right-0 mt-4 py-4 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border border-gray-300 rounded-md shadow-lg z-10`}>
                         <Link
                           to="/profile"
-                          className={`block px-4 py-2 text-sm ${theme === 'dark' ? 'text-white' : 'text-black'} hover:bg-gray-100`}
+                          className={`block px-4 py-4 text-sm ${theme === 'dark' ? 'text-white' : 'text-black'} hover:bg-gray-100`}
                         >
                           View Profile
                         </Link>
                         <Link
                           to="/settings"
-                          className={`block px-4 py-2 text-sm ${theme === 'dark' ? 'text-white' : 'text-black'} hover:bg-gray-100`}
+                          className={`block px-4 py-4 text-sm ${theme === 'dark' ? 'text-white' : 'text-black'} hover:bg-gray-100`}
                         >
                           Settings
                         </Link>
                         <button
                           onClick={handleLogout}
-                          className={`block w-full text-left px-4 py-2 text-sm ${theme === 'dark' ? 'text-red-400' : 'text-red-600'} hover:bg-gray-100`}
+                          className={`block w-full text-left px-4 py-4 text-sm ${theme === 'dark' ? 'text-red-400' : 'text-red-600'} hover:bg-gray-100`}
                         >
                           Logout
                         </button>
@@ -163,9 +182,9 @@ const NavBar = () => {
               ) : (
                 <motion.button
                   onClick={handleLogin}
-                  className={`bg-blue-500 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-600 ${theme === 'dark' ? 'hover:bg-blue-400' : ''}`}
-                  whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-                  whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
+                  className={`bg-blue-500 text-white font-medium py-4 px-4 rounded-md hover:bg-blue-600 ${theme === 'dark' ? 'hover:bg-blue-400' : ''}`}
+                  whileHover={{ scale: 1.05, transition: { duration: 0.4 } }}
+                  whileTap={{ scale: 0.95, transition: { duration: 0.4 } }}
                 >
                   Sign up / Log in
                 </motion.button>
@@ -174,17 +193,17 @@ const NavBar = () => {
             <motion.div className="md:hidden flex items-center"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}>
+              transition={{ duration: 0.5, delay: 0.4 }}>
               <button
                 type="button"
                 onClick={handleToggleDropdown}
                 className={`text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900 ${theme === 'dark' ? 'text-white' : ''}`}
                 aria-label="Toggle menu"
               >
-                <svg className={`h-6 w-6 fill-current ${theme === 'dark' ? 'text-white' : ''}`} viewBox="0 0 24 24">
+                <svg className={`h-6 w-6 fill-current ${theme === 'dark' ? 'text-white' : ''}`} viewBox="0 0 44 44">
                   <path
                     className="heroicon-ui"
-                    d="M4 6h16M4 12h16m-7 6h7"
+                    d="M4 6h16M4 14h16m-7 6h7"
                   />
                 </svg>
               </button>
@@ -192,7 +211,7 @@ const NavBar = () => {
             <motion.div className="ml-4"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}>
+              transition={{ duration: 0.5, delay: 0.4 }}>
               <button
                 type="button"
                 onClick={toggleTheme}
@@ -205,7 +224,7 @@ const NavBar = () => {
                   </motion.span>
                 ) : (
                   <motion.span whileHover={{ scale: 1.1 }}>
-                    <FiSun size={35} color='yellow' className="glow-icon" />
+                    <FiSun size={35} color='blue' className="glow-icon" />
                   </motion.span>
                 )}
               </button>

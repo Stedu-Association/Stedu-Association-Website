@@ -8,7 +8,7 @@ function App() {
   const { loginWithRedirect } = useAuth0();
 
   return (
-    <div>
+    <div className="font-montserrat">
       <Router>
       <div>
         <NavBar/>
