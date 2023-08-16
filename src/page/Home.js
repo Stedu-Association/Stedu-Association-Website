@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import Logo from '../assets/images/logo.png';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useTheme } from '../components/ThemeContext';
-import Google from '../assets/images/sponsors/google_logo (1).png';
-import Canva from '../assets/images/sponsors/Canva-New-Logo.png';
-import Crimson from '../assets/images/sponsors/crimson_logo (1).webp';
-import Fibery from '../assets/images/sponsors/fibery.png';
-import Taskade from '../assets/images/sponsors/taskade-circle-logo-full-black.png';
+import Google from '../assets/images/sponsors/google.png';
+import Canva from '../assets/images/sponsors/canva.png';
+import Crimson from '../assets/images/sponsors/cyf2.png';
+import Fibery from '../assets/images/sponsors/fibery_white.png';
+import Taskade from '../assets/images/sponsors/taskade.png';
 import { FiBookOpen, FiBriefcase, FiCalendar, FiPlus, FiUsers } from 'react-icons/fi';
 import SteduLab from '../assets/gif/animation1.gif'
 import SteduCourses from '../assets/gif/animation2.gif'
@@ -104,13 +104,13 @@ const Home = () => {
             </motion.p> */}
 
             {/* Sponsors */}
-            <div className="sponsors-section py-4 px-4 relative">
-              <div className="blackish-background absolute inset-0 bg-black bg-opacity-30 backdrop-filter backdrop-blur-lg z-0"></div>
+            <div className="sponsors-section relative">
+              {/* Dark blue background with blur effect */}
+              <div className="bg-gray-800 absolute inset-0 backdrop-blur-md z-0"></div>
               <div className="container mx-auto">
                 <div className={`sponsors-list flex flex-col items-center justify-center text-center ${theme === 'dark' ? 'text-blue-200' : 'text-black'}`}>
                   <div className="horizontal-sponsor-strip flex items-center space-x-6 relative z-1">
-                  <h2 className=" text-2xl font-bold mb-4">Trusted by</h2>
-
+                    <h2 className="text-2xl text-blue-300 font-bold mb-4">Trusted by</h2>
                     {sponsorImages.map((sponsor, index) => (
                       <motion.div
                         key={index}
@@ -133,7 +133,7 @@ const Home = () => {
 
             <div className='section-separator' />
             {/* Impact stats */}
-            <div className="impact-section p-5 text-center relative">
+            <div className="impact-section text-center relative">
               <div className="container mx-auto">
                 <div>
                   <h2 className={`text-3xl font-bold custom-underline mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
