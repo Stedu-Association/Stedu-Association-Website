@@ -105,7 +105,6 @@ const Home = () => {
 
             {/* Sponsors */}
             <div className="sponsors-section relative">
-              {/* Dark blue background with blur effect */}
               <div className="bg-gray-800 absolute inset-0 backdrop-blur-md z-0"></div>
               <div className="container mx-auto">
                 <div className={`sponsors-list flex flex-col items-center justify-center text-center ${theme === 'dark' ? 'text-blue-200' : 'text-black'}`}>
@@ -191,7 +190,7 @@ const Home = () => {
             {/* Stedu initiatives */}
             <div className="stedu-sections py-16 px-10">
               <h2 className={`text-3xl custom-underline font-bold text-center mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
-                Explore Stedu Initiatives
+                Explore Stedu Programs
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {[

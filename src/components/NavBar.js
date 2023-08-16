@@ -90,14 +90,14 @@ const NavBar = () => {
                 Meet the Team
               </Link>
 
-              {/*Stedu Initiatives */}
+              {/*Stedu Programs */}
                 <div className="relative group">
                   <div
                     className={`flex items-center hover:text-blue-500 font-medium whitespace-nowrap cursor-pointer ${theme === 'dark' ? 'text-white' : ''}`}
                     onClick={handleToggleSteduDropdown}
                   >
                     <FiBriefcase size={18} className="mr-1 inline" />
-                    Stedu Initiatives
+                    Stedu Programs
                   </div>
                   {showSteduDropdown && (
                     <motion.div
