@@ -1,44 +1,67 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FiFacebook, FiTwitter, FiInstagram, FiLinkedin } from 'react-icons/fi';
+import { motion } from 'framer-motion';
+import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
+import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import Logo from '../assets/images/logo.png';
 
 const Footer = () => {
   return (
-    <footer className="bg-blue-900 text-white py-10">
+    <footer className='bg-gray-900 text-white p-12'>
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-6 md:mb-0">
-            <Link to="/">
-              <img src={Logo} alt="Logo" className="w-10 h-10" />
-            </Link>
-            <p className="mt-2 text-sm text-gray-400">Providing STEM Education and Opportunities for All</p>
+          <div className="flex items-center mb-6 md:mb-0">
+            <img src={Logo} alt="Logo" className="w-10 h-10 mr-2" />
+            <span className="text-lg font-bold">Stedu Association</span>
           </div>
-          <div className="flex space-x-4">
-            <Link to="/about" className="text-sm text-gray-400 hover:text-white">About Us</Link>
-            <Link to="/contact" className="text-sm text-gray-400 hover:text-white">Contact</Link>
-            <Link to="/privacy-policy" className="text-sm text-gray-400 hover:text-white">Privacy Policy</Link>
-            <Link to="/terms-of-service" className="text-sm text-gray-400 hover:text-white">Terms of Service</Link>
-          </div>
-          <div className="flex space-x-4 mt-4 md:mt-0">
-            <Link to="/" className="text-gray-400 hover:text-white">
-              <FiFacebook size={20} />
-            </Link>
-            <Link to="/" className="text-gray-400 hover:text-white">
-              <FiTwitter size={20} />
-            </Link>
-            <Link to="/" className="text-gray-400 hover:text-white">
-              <FiInstagram size={20} />
-            </Link>
-            <Link to="/" className="text-gray-400 hover:text-white">
-              <FiLinkedin size={20} />
-            </Link>
+          <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6">
+            <div className="flex items-center space-x-2">
+              <FiMail />
+              <span>info@steduassociation.com</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <FiPhone />
+              <span>+123 456 7890</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <FiMapPin />
+              <span>123 Street, City</span>
+            </div>
           </div>
         </div>
-        <hr className="border-t border-gray-600 mt-8" />
-        <p className="text-center text-sm mt-6 text-gray-400">
+        <motion.div className="flex justify-center space-x-4 mt-6">
+          <motion.a
+            href="https://www.facebook.com/steduassociation"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.1 }}
+          >
+            <FaFacebook className="text-white text-2xl" />
+          </motion.a>
+          <motion.a
+            href="https://www.twitter.com/steduassociation"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.1 }}
+          >
+            <FaTwitter className="text-white text-2xl" />
+          </motion.a>
+          <motion.a
+            href="https://www.linkedin.com/company/steduassociation"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.1 }}
+          >
+            <FaLinkedin className="text-white text-2xl" />
+          </motion.a>
+        </motion.div>
+        <hr className='my-6 border-gray-600' />
+        <p className="text-center text-sm">
           &copy; {new Date().getFullYear()} Stedu Association. All rights reserved.
         </p>
+        <div className="text-center mt-4">
+          <p>Sign Up for our Monthly Newsletter!</p>
+          <p className="text-blue-500 cursor-pointer hover:underline">We will not spam you, really.</p>
+        </div>
       </div>
     </footer>
   );
