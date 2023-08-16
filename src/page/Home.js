@@ -135,54 +135,58 @@ const Home = () => {
             </div>
 
             {/* Impact stats */}
-            <div className="impact-section p-5 text-center">
+            <div className="impact-section p-5 text-center relative">
               <div className="container mx-auto">
+              <div>
                 <h2 className={`text-3xl font-bold custom-underline mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
                   Our Impact in Numbers
                 </h2>
-                <motion.div
-                  className={`grid grid-cols-2 gap-8 ${theme === 'dark' ? 'bg-opacity-25' : 'bg-opacity-10'} backdrop-filter backdrop-blur-lg`}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                >
-                  {impactStats.map((stat, index) => (
-                    <motion.div
-                      key={index}
-                      whileHover={{ scale: 1.05, y: -10 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`impact-stat ${theme === 'dark' ? 'text-white' : 'text-gray-800'} p-6 rounded-lg shadow-lg flex flex-col justify-center items-center`}
-                    >
-                      <div className="icon-wrapper">
-                        {stat.label === 'students' ? (
-                          <motion.div
-                            initial={{ rotateY: -90, opacity: 0 }}
-                            animate={{ rotateY: 0, opacity: 1 }}
-                            transition={{ duration: 1, delay: 0.3 }}
-                            className="icon"
-                          >
-                            <FiUsers size={40} />
-                          </motion.div>
-                        ) : (
-                          <motion.div
-                            initial={{ rotateY: -90, opacity: 0 }}
-                            animate={{ rotateY: 0, opacity: 1 }}
-                            transition={{ duration: 1, delay: 0.3 }}
-                            className="icon"
-                          >
-                            <FiBookOpen size={40} />
-                          </motion.div>
-                        )}
-                      </div>
-                      <motion.p className="stat-value text-4xl font-bold my-2">
-                        {stat.value}
-                      </motion.p>
-                      <motion.p className={`stat-label ${theme === 'dark' ? 'text-blue-400' : 'text-blue-600'} text-xl font-semibold`}>
-                        {stat.label}
-                      </motion.p>
-                    </motion.div>
-                  ))}
-                </motion.div>
+              </div>
+                <div className={`bg-${theme === 'dark' ? 'black' : 'white'} bg-opacity-40 rounded-lg backdrop-blur-lg p-8 relative z-10`}>
+                  <motion.div
+                    className="grid grid-cols-2 gap-8"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                  >
+                    {impactStats.map((stat, index) => (
+                      <motion.div
+                        key={index}
+                        whileHover={{ scale: 1.05, y: -10 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`impact-stat ${theme === 'dark' ? 'text-white' : 'text-gray-800'} p-6 rounded-lg shadow-lg flex flex-col justify-center items-center`}
+                      >
+                        <div className="icon-wrapper">
+                          {stat.label === 'students' ? (
+                            <motion.div
+                              initial={{ rotateY: -90, opacity: 0 }}
+                              animate={{ rotateY: 0, opacity: 1 }}
+                              transition={{ duration: 1, delay: 0.3 }}
+                              className="icon"
+                            >
+                              <FiUsers size={40} />
+                            </motion.div>
+                          ) : (
+                            <motion.div
+                              initial={{ rotateY: -90, opacity: 0 }}
+                              animate={{ rotateY: 0, opacity: 1 }}
+                              transition={{ duration: 1, delay: 0.3 }}
+                              className="icon"
+                            >
+                              <FiBookOpen size={40} />
+                            </motion.div>
+                          )}
+                        </div>
+                        <motion.p className="stat-value text-4xl font-bold my-2">
+                          {stat.value}
+                        </motion.p>
+                        <motion.p className={`stat-label ${theme === 'dark' ? 'text-blue-400' : 'text-blue-600'} text-xl font-semibold`}>
+                          {stat.label}
+                        </motion.p>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </div>
               </div>
             </div>
 
@@ -261,6 +265,7 @@ const Home = () => {
                   ))}
                 </Slider>
                 <div className="testimonial-bg-gradient absolute inset-0 pointer-events-none"></div>
+             
               </div>
             </div>
           </div>
