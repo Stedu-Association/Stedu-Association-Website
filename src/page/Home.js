@@ -9,7 +9,8 @@ import Canva from '../assets/images/sponsors/canva.png';
 import Crimson from '../assets/images/sponsors/cyf2.png';
 import Fibery from '../assets/images/sponsors/fibery_white.png';
 import Taskade from '../assets/images/sponsors/taskade.png';
-import { FiBookOpen, FiBriefcase, FiCalendar, FiPlus, FiUsers } from 'react-icons/fi';
+import HackClub from '../assets/images/sponsors/hack_club.png';
+import { FiBookOpen, FiBriefcase, FiCalendar, FiGlobe, FiPlus, FiUsers } from 'react-icons/fi';
 import SteduLab from '../assets/gif/animation1.gif'
 import SteduCourses from '../assets/gif/animation2.gif'
 import SteduClub from '../assets/gif/animation4.gif'
@@ -64,11 +65,13 @@ const Home = () => {
     { src: Google, alt: 'Google' },
     { src: Taskade, alt: 'Taskade' },
     { src: Fibery, alt: 'Fibery' },
+    { src: HackClub, alt: 'Hack Club' },
   ];
 
   const impactStats = [
     { label: 'students', value: '480+' },
     { label: 'lectures', value: '45+' },
+    { label: 'countries', value: '14+' },
   ];
 
   return (
@@ -103,34 +106,37 @@ const Home = () => {
             We strive to promote the idea of "STEM for ALL" by presenting STEM opportunities to everyone, regardless of where they are from, what they do, or how they identify.
             </motion.p> */}
 
+            <div className='section-separator' />            
             {/* Sponsors */}
-            <div className="sponsors-section relative">
-              <div className="bg-gray-800 absolute inset-0 backdrop-blur-md z-0"></div>
-              <div className="container mx-auto">
-                <div className={`sponsors-list flex flex-col items-center justify-center text-center ${theme === 'dark' ? 'text-blue-200' : 'text-black'}`}>
-                  <div className="horizontal-sponsor-strip flex items-center space-x-6 relative z-1">
-                    <h2 className="text-2xl text-blue-300 font-bold mb-4">Trusted by</h2>
-                    {sponsorImages.map((sponsor, index) => (
-                      <motion.div
-                        key={index}
-                        className="sponsor-item rounded-lg overflow-hidden"
-                        initial={{ y: 100, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 1, delay: index * 0.5 }}
-                      >
-                        <motion.img
-                          src={sponsor.src}
-                          alt={sponsor.alt}
-                          className={`w-40 h-auto grayscale transition duration-500 hover:grayscale-0 transform hover:scale-101`}
-                        />
-                      </motion.div>
-                    ))}
+            <div>
+              <h1 className='text-blue-500'>Trusted by</h1>
+            </div>
+            <div className='py-3'>
+              <div className="sponsors-section relative bg-gray-900 rounded-lg">
+                <div className="container mx-auto">
+                  <div className={`sponsors-list flex flex-col items-center justify-center text-center ${theme === 'dark' ? 'text-blue-200' : 'text-black'}`}>
+                    <div className="horizontal-sponsor-strip flex items-center space-x-6 relative z-1">
+                      {sponsorImages.map((sponsor, index) => (
+                        <motion.div
+                          key={index}
+                          className="sponsor-item rounded-lg overflow-hidden"
+                          initial={{ y: 100, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{ duration: 1, delay: index * 0.5 }}
+                        >
+                          <motion.img
+                            src={sponsor.src}
+                            alt={sponsor.alt}
+                            className={`w-20 h-auto grayscale transition duration-500 hover:grayscale-0 transform hover:scale-101 rounded-lg`}
+                          />
+                        </motion.div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className='section-separator' />
             {/* Impact stats */}
             <div className="impact-section text-center relative">
               <div className="container mx-auto">
@@ -141,7 +147,7 @@ const Home = () => {
                 </div>
                 <div className={`bg-${theme === 'dark' ? 'black' : 'white'} bg-opacity-40 rounded-lg backdrop-blur-lg p-8 relative z-10`}>
                   <motion.div
-                    className="grid grid-cols-2 gap-8"
+                    className="grid grid-cols-3 gap-8"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.5 }}
@@ -164,14 +170,25 @@ const Home = () => {
                               <FiUsers size={40} />
                             </motion.div>
                           ) : (
-                            <motion.div
-                              initial={{ rotateY: -90, opacity: 0 }}
-                              animate={{ rotateY: 0, opacity: 1 }}
-                              transition={{ duration: 1, delay: 0.3 }}
-                              className="icon"
-                            >
-                              <FiBookOpen size={40} />
-                            </motion.div>
+                            stat.label === 'countries' ? (
+                              <motion.div
+                                initial={{ rotateY: -90, opacity: 0 }}
+                                animate={{ rotateY: 0, opacity: 1 }}
+                                transition={{ duration: 1, delay: 0.3 }}
+                                className="icon"
+                              >
+                                <FiGlobe size={40} />
+                              </motion.div>
+                            ) : (
+                              <motion.div
+                                initial={{ rotateY: -90, opacity: 0 }}
+                                animate={{ rotateY: 0, opacity: 1 }}
+                                transition={{ duration: 1, delay: 0.3 }}
+                                className="icon"
+                              >
+                                <FiBookOpen size={40} />
+                              </motion.div>
+                            )
                           )}
                         </div>
                         <motion.p className="stat-value text-4xl font-bold my-2">
