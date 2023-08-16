@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom';
 import Logo from '../assets/images/logo.png';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useTheme } from '../components/ThemeContext';
+import Google from '../assets/images/sponsors/google_logo.png';
+import Canva from '../assets/images/sponsors/canva_logo.png';
+import Crimson from '../assets/images/sponsors/crimson_logo.webp';
+import Fibery from '../assets/images/sponsors/fibery.png';
+import Taskade from '../assets/images/sponsors/taskade-logo.png';
+
 
 const Home = () => {
   const [typingText, setTypingText] = useState('');
@@ -43,13 +49,22 @@ const Home = () => {
     },
   ];
 
+
+  const sponsorImages = [
+    { src: Google, alt: 'Google' },
+    { src: Canva, alt: 'Canva' },
+    { src: Crimson, alt: 'Crimson' },
+    { src: Taskade, alt: 'Taskade' },
+    { src: Fibery, alt: 'Fibery' },
+  ];
+
   return (
     <div className={theme}>
       {/* Hero Section */}
-      <div className={`hero-section ${theme === 'dark' ? 'bg-gradient-to-r from-black via-blue-900 to-black text-white' : 'bg-gradient-to-r from-blue-500 via-white to-blue-400'}  py-20 px-10 relative`}>
+      <div className={`hero-section ${theme === 'dark' ? 'bg-gradient-to-r from-black via-blue-900 to-black text-white' : 'bg-gradient-to-r from-blue-500 via-white to-blue-400'}  py-10 px-10 relative`}>
         <div className="container mx-auto">
           <div className="text-center">
-            <img src={Logo} alt="Logo" className="w-40 md:w-60 mb-4 mx-auto" />
+            <img src={Logo} alt="Logo" className="w-60 md:w-60 mb-4 mx-auto" />
             <motion.h1
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -66,12 +81,47 @@ const Home = () => {
             >
               Providing STEM Education and Opportunities for All
             </motion.p>
+            {/* <motion.p
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="hero-description text-md mt-4"
+            >
+            We strive to promote the idea of "STEM for ALL" by presenting STEM opportunities to everyone, regardless of where they are from, what they do, or how they identify.
+            </motion.p> */}
           </div>
         </div>
       </div>
 
       {/* Sponsors */}
-      
+      <div className="sponsors-section py-1 px-4 bg-opacity-50 backdrop-filter backdrop-blur-lg">
+        <div className="container mx-auto">
+          <motion.div
+            className="sponsors-list flex items-center justify-center overflow-hidden"
+            initial={{ x: -1000 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">Trusted by</h2>
+
+            {sponsorImages.map((sponsor, index) => (
+              <motion.div
+                key={index}
+                className="w-40 h-40 rounded-full overflow-hidden m-4 flex items-center justify-center shadow-xl bg-white transform hover:scale-105 transition-transform duration-300"
+                initial={{ y: 100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1, delay: index * 0.5 }}
+              >
+                <motion.img
+                  src={sponsor.src}
+                  alt={sponsor.alt}
+                  className="w-full h-auto"
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
 
       {/* Testimonials Section */}
       <div className={`testimonials-section ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} py-16 px-10`}>
