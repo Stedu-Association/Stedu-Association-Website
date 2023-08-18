@@ -112,7 +112,7 @@ const Home = () => {
               <h1 className='text-blue-500'>Trusted by</h1>
             </div>
             <div className='py-3'>
-              <div className="sponsors-section relative bg-gray-900 rounded-lg">
+              <div className="sponsors-section relative bg-blue-700 rounded-lg">
                 <div className="container mx-auto">
                   <div className={`sponsors-list flex flex-col items-center justify-center text-center ${theme === 'dark' ? 'text-blue-200' : 'text-black'}`}>
                     <div className="horizontal-sponsor-strip flex items-center space-x-6 relative z-1">
