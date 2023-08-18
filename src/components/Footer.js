@@ -1,16 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import { IoMdPaperPlane } from 'react-icons/io';
 import Logo from '../assets/images/logo.png';
+import app from '../db/Firebase';
+import { getDatabase, ref, push, query, update, get, orderByChild, equalTo } from 'firebase/database';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+  const [subscriptionSuccess, setSubscriptionSuccess] = useState(false);
+  const db = getDatabase(app);
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubscription = async (e) => {
+    e.preventDefault();
+
+    try {
+      await push(ref(db, "subscriptions"), {
+        email,
+        timestamp: new Date().toISOString(),
+      });
+
+      setSubscriptionSuccess(true);
+      setEmail(""); 
+    } catch (error) {
+      console.error("Error subscribing:", error);
+    }
+  };
+
   return (
     <footer className='bg-gray-900 text-white p-12 relative'>
-      {/* Blurred background */}
       <div className="absolute inset-0 backdrop-blur-lg"></div>
-      
+
       <div className="container mx-auto relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center mb-6 md:mb-0">
@@ -61,10 +86,12 @@ const Footer = () => {
             <p className="text-blue-500 cursor-pointer hover:underline">We will not spam you, really.</p>
           </div>
           <div className="mt-4 md:mt-0">
-            <form className="flex items-center">
+            <form className="flex items-center" onSubmit={handleSubscription}>
               <input
                 type="email"
                 placeholder="Your email address"
+                value={email}
+                onChange={handleEmailChange}
                 className="rounded-l-md bg-gray-800 px-3 py-2 text-white focus:outline-none"
               />
               <button
@@ -74,6 +101,9 @@ const Footer = () => {
                 <IoMdPaperPlane className="text-xl" />
               </button>
             </form>
+            {subscriptionSuccess && (
+              <p className="mt-2 text-green-500">Thanks for subscribing!</p>
+            )}
           </div>
         </div>
         <div className="text-center mt-6">
