@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
+import { FiMail, FiMapPin } from 'react-icons/fi';
 import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import { IoMdPaperPlane } from 'react-icons/io';
 import Logo from '../assets/images/logo.png';
 import app from '../db/Firebase';
-import { getDatabase, ref, push, query, update, get, orderByChild, equalTo } from 'firebase/database';
+import { getDatabase, ref, push } from 'firebase/database';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -26,7 +26,7 @@ const Footer = () => {
       });
 
       setSubscriptionSuccess(true);
-      setEmail(""); 
+      setEmail("");
     } catch (error) {
       console.error("Error subscribing:", error);
     }
@@ -50,6 +50,10 @@ const Footer = () => {
             <div className="flex items-center space-x-2">
               <FiMapPin />
               <span>South Korea</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <FiMapPin />
+              <span>California</span>
             </div>
           </div>
         </div>
