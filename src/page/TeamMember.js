@@ -1,16 +1,38 @@
 import React from 'react';
-import { FaTwitter, FaLinkedin, FaMailBulk } from 'react-icons/fa'; 
+import { FaTwitter, FaLinkedin } from 'react-icons/fa'; 
 import { FiMail } from 'react-icons/fi';
+import { motion } from 'framer-motion'; // Import Framer Motion
 import { useTheme } from '../components/ThemeContext';
 
 const TeamMember = ({ member }) => {
   const { theme } = useTheme();
-  return (
-    <div className={`team-member p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-800'}`}>
+  
+  // Framer Motion variants for animations
+  const cardVariants = {
+    initial: { opacity: 0, scale: 0.9 },
+    animate: { opacity: 1, scale: 1 },
+    hover: { scale: 1.05 },
+  };
 
-      <div className="team-member-image-wrapper flex items-center justify-center">
-        <img src={member.imageSrc} alt={member.name} className="w-32 h-32 rounded-full object-cover" />
-      </div>
+  const imageVariants = {
+    hover: { scale: 1.1 },
+  };
+
+  return (
+    <motion.div
+      className={`team-member p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-800'}`}
+      variants={cardVariants}
+      initial="initial"
+      animate="animate"
+      whileHover="hover"
+    >
+
+      <motion.div
+        className="team-member-image-wrapper flex items-center justify-center"
+        variants={imageVariants}
+      >
+        <img src={member.imageSrc} alt={member.name} className="w-32 h-32 rounded-full object-cover border border-primaryBlue" />
+      </motion.div>
       <div className="team-member-details mt-4 text-center">
         <h3 className="text-x2 font-semibold">{member.name}</h3>
         <p className="text-primaryBlue">{member.role}</p>
@@ -38,7 +60,7 @@ const TeamMember = ({ member }) => {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
