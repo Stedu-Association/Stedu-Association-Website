@@ -285,7 +285,7 @@ const MeetTheTeam = () => {
   ];
 
   return (
-    <div className={`meet-the-team-section ${theme === 'dark' ? 'bg-black text-white' : 'bg-gradient-to-r from-blue-500 via-white to-blue-400 text-gray-800'} py-16 px-10`}>
+    <div className={`meet-the-team-section ${theme === 'dark' ? 'bg-gradient-to-r from-black via-blue-900 to-black text-white' : 'bg-gradient-to-r from-blue-500 via-white to-blue-400 text-gray-800'} py-16 px-10`}>
       <div className="container mx-auto">
         <h2 className={`text-center text-3xl font-bold mb-8 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
           Meet the Team
