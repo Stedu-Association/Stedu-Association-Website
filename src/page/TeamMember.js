@@ -1,10 +1,13 @@
 import React from 'react';
 import { FaTwitter, FaLinkedin, FaMailBulk } from 'react-icons/fa'; 
 import { FiMail } from 'react-icons/fi';
+import { useTheme } from '../components/ThemeContext';
 
 const TeamMember = ({ member }) => {
+  const { theme } = useTheme();
   return (
-    <div className="team-member p-4 rounded-lg shadow-lg bg-white hover:shadow-xl transition duration-300 transform hover:scale-105">
+    <div className={`team-member p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-800'}`}>
+
       <div className="team-member-image-wrapper flex items-center justify-center">
         <img src={member.imageSrc} alt={member.name} className="w-32 h-32 rounded-full object-cover" />
       </div>
